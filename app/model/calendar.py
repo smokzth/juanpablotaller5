@@ -103,7 +103,13 @@ class Day:
         for slot in self.slots:
             if self.slots[slot] == event_id:
                 self.slots[slot] = None
-            pass
+
+        for slot in self.slots:
+            if start_at <= slot < end_at:
+                if self.slots[slot]:
+                    slot_not_available_error()
+                else:
+                    self.slots[slot] = event_id
 
 class Calendar:
     def __init__(self):
